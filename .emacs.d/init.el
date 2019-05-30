@@ -150,7 +150,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (aggressive-indent autopair smartparens nord-theme moe-theme rjsx-mode xref-js2 js2-refactor js2-mode kaolin-themes dracula-theme add-node-modules-path prettier-js web-mode solarized-theme magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
+    (evil aggressive-indent autopair smartparens nord-theme moe-theme rjsx-mode xref-js2 js2-refactor js2-mode kaolin-themes dracula-theme add-node-modules-path prettier-js web-mode solarized-theme magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -260,3 +260,20 @@
 ;; enable projectile bindings
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
+
+;; change evil mode line color
+;; change mode-line color by evil state
+(evil-mode t)
+(if evil-mode 
+    (lexical-let ((default-color (cons (face-background 'mode-line)
+                                        (face-foreground 'mode-line))))
+        (add-hook 'post-command-hook
+        (lambda ()
+            (let ((color (cond ((minibufferp) default-color)
+                            ((evil-insert-state-p) '("#4c566a" . "#d8dee9"))
+                            ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
+                            ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
+                            (t default-color))))
+            (set-face-background 'mode-line (car color))
+            (set-face-foreground 'mode-line (cdr color))))))
+)
