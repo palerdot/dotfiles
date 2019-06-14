@@ -11,7 +11,7 @@ backups
 melpa-stable
 archive-contents
 *.elc
-/.emacs.desktop
-/.emacs.desktop.lock
+.emacs.desktop
+.emacs.desktop.lock
 # elpa packages
 /elpa/

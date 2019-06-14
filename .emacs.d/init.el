@@ -150,7 +150,7 @@
  '(js-indent-level 2)
  '(package-selected-packages
    (quote
-    (evil aggressive-indent autopair smartparens nord-theme moe-theme rjsx-mode xref-js2 js2-refactor js2-mode kaolin-themes dracula-theme add-node-modules-path prettier-js web-mode solarized-theme magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
+    (helm-projectile tern-auto-complete company-tern company-lsp company lsp-mode dumb-jump tide evil-nerd-commenter evil-commentary evil aggressive-indent autopair smartparens nord-theme moe-theme rjsx-mode xref-js2 js2-refactor js2-mode kaolin-themes dracula-theme add-node-modules-path prettier-js web-mode solarized-theme magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -259,7 +259,13 @@
 
 ;; enable projectile bindings
 (projectile-mode +1)
-(define-key projectile-mode-map (kbd "C-c C-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-s C-d") 'projectile-command-map)
+;;; set helm mode?
+(setq projectile-completion-system 'helm)
+
+;; (setq helm-projectile-fuzzy-match nil)
+(require 'helm-projectile)
+(helm-projectile-on)
 
 ;; change evil mode line color
 ;; change mode-line color by evil state
@@ -272,8 +278,43 @@
             (let ((color (cond ((minibufferp) default-color)
                             ((evil-insert-state-p) '("#4c566a" . "#d8dee9"))
                             ((evil-emacs-state-p)  '("#444488" . "#ffffff"))
+                            ((evil-visual-state-p)  '("#333333" . "#ffffff"))
                             ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
                             (t default-color))))
             (set-face-background 'mode-line (car color))
             (set-face-foreground 'mode-line (cdr color))))))
 )
+
+;;; evil nerd commenter enabling
+(evilnc-default-hotkeys)
+
+;;; enable tern
+;;; ref: http://ternjs.net/doc/manual.html#emacs
+;;; (add-to-list 'load-path "/Users/Arun/play/just/tern/emacs")
+;;; (autoload 'tern-mode "tern.el" nil t)
+
+;;; company lsp
+(require 'company-lsp)
+(push 'company-lsp company-backends)
+;;; enable company mode in all buffers???
+(add-hook 'after-init-hook 'global-company-mode)
+;;; enable lsp mode for rjsx
+(require 'lsp-mode)
+(add-hook 'rjsx-mode-hook #'lsp)
+;;; disable flymake/flycheck for now
+(setq lsp-prefer-flymake :none)
+
+;;; TERM related stuffs
+;; (require 'company)
+;; (require 'company-tern)
+
+;; (add-to-list 'company-backends 'company-tern)
+;; (add-hook 'rjsx-mode-hook 'tern-mode) 
+;; (add-hook 'rjsx-mode-hook 'company-tern) 
+;; (add-hook 'rjsx-mode-hook 'company-lsp) 
+
+;;; set company backends for rjsx
+;;; complete files and langauage specific stuffs with lsp
+(add-hook 'rjsx-mode-hook
+          (lambda ()
+            (setq-local company-backends '((company-files company-lsp)))))
