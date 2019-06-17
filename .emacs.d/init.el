@@ -148,9 +148,10 @@
     ("14de8f58ad656af5be374086ae7ab663811633fc1483a02add92f7a1ff1a8455" default)))
  '(electric-pair-mode t)
  '(js-indent-level 2)
+ '(nord-region-highlight "red")
  '(package-selected-packages
    (quote
-    (helm-projectile tern-auto-complete company-tern company-lsp company lsp-mode dumb-jump tide evil-nerd-commenter evil-commentary evil aggressive-indent autopair smartparens nord-theme moe-theme rjsx-mode xref-js2 js2-refactor js2-mode kaolin-themes dracula-theme add-node-modules-path prettier-js web-mode solarized-theme magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
+    (flymd helm-projectile tern-auto-complete company-tern company-lsp company lsp-mode dumb-jump tide evil-nerd-commenter evil-commentary evil aggressive-indent autopair smartparens nord-theme moe-theme rjsx-mode xref-js2 js2-refactor js2-mode kaolin-themes dracula-theme add-node-modules-path prettier-js web-mode solarized-theme magit tagedit rainbow-delimiters projectile smex ido-completing-read+ cider clojure-mode-extra-font-locking clojure-mode paredit exec-path-from-shell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -163,6 +164,10 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;; (load-theme 'dracula t)
 (load-theme 'nord t)
+;;; set nord highlight color
+(setq nord-region-highlight "frost")
+;;; hack to make nord region highlight work ^^^ above piece of code does not work
+(set-face-attribute 'region nil :background "#D8DEE9" :foreground "#2e3440")
 ;; (require 'kaolin-themes)
 ;; (load-theme 'kaolin-ocean t)
 
@@ -318,3 +323,15 @@
 (add-hook 'rjsx-mode-hook
           (lambda ()
             (setq-local company-backends '((company-files company-lsp)))))
+
+
+;;; set flymd browser to firefox
+;;; ref: https://github.com/mola-T/flymd/blob/master/browser.md
+(defun my-flymd-browser-function (url)
+  (let ((process-environment (browse-url-process-environment)))
+    (apply 'start-process
+           (concat "firefox " url)
+           nil
+           "/usr/bin/open"
+           (list "-a" "firefox" url))))
+(setq flymd-browser-open-function 'my-flymd-browser-function)
