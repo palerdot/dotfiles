@@ -183,28 +183,26 @@
 (eval-after-load 'js2-mode
   '(add-hook 'js2-mode-hook #'add-node-modules-path))
 
-;; (add-to-list 'auto-mode-alist '("\\.jsx?$" . js2-mode)) ;; auto-enable for .js/.jsx files
-;; (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 ;; Better imenu
-(add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
+;; (add-hook 'js2-mode-hook #'js2-imenu-extras-mode)
 ;; (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'")))
 
 (require 'js2-refactor)
 (require 'xref-js2)
 
-(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
 
-(add-hook 'js2-mode-hook #'js2-refactor-mode)
-(js2r-add-keybindings-with-prefix "C-c C-r")
-(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+;; (add-hook 'js2-mode-hook #'js2-refactor-mode)
+;; (js2r-add-keybindings-with-prefix "C-c C-r")
+;; (define-key js2-mode-map (kbd "C-k") #'js2r-kill)
 
 ;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
 ;; unbind it.
-(define-key js-mode-map (kbd "M-.") nil)
+;; (define-key js-mode-map (kbd "M-.") nil)
 
-(add-hook 'js2-mode-hook (lambda ()
-  (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+;; (add-hook 'js2-mode-hook (lambda ()
+;;   (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
 
 (defun js2-mode-init-hook ()
   "Hooks for js2 mode.  Adjust indent."
@@ -230,7 +228,7 @@
   (if (locate-dominating-file default-directory ".prettierrc")
       (prettier-js-mode +1)))
 
-(add-hook 'js2-mode-hook 'maybe-use-prettier)
+(add-hook 'rjsx-mode-hook 'maybe-use-prettier)
 
 ;; END: PRETTIER
 
@@ -271,9 +269,9 @@
 ;; (setq helm-projectile-fuzzy-match nil)
 (require 'helm-projectile)
 (helm-projectile-on)
-
+;;; ref: https://dougie.io/emacs/indentation/
+;;; set indentation stuffs
 ;; change evil mode line color
-;; change mode-line color by evil state
 (evil-mode t)
 (if evil-mode 
     (lexical-let ((default-color (cons (face-background 'mode-line)

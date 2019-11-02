@@ -25,9 +25,37 @@
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
 
+
+; START TABS CONFIG
+
 ;; Don't use hard tabs
 (setq-default indent-tabs-mode nil)
 (setq tab-width 2)
+
+(setq-default js-indent-level tab-width)      ;; Javascript
+
+;; Making electric-indent behave sanely
+(setq-default electric-indent-inhibit t)
+
+;; Make the backspace properly erase the tab instead of
+;; removing 1 space at a time.
+(setq backward-delete-char-untabify-method 'hungry)
+
+;; (OPTIONAL) Shift width for evil-mode users
+;; For the vim-like motions of ">>" and "<<".
+(setq-default evil-shift-width tab-width)
+
+;; WARNING: This will change your life
+;; (OPTIONAL) Visualize tabs as a pipe character - "|"
+;; This will also show trailing characters as they are useful to spot.
+;; (setq whitespace-style '(face tabs tab-mark trailing))
+;; (custom-set-faces
+;;  '(whitespace-tab ((t (:foreground "#636363")))))
+;; (setq whitespace-display-mappings
+;;   '((tab-mark 9 [124 9] [92 9]))) ; 124 is the ascii ID for '\|'
+;; (global-whitespace-mode) ; Enable whitespace mode everywhere
+
+; END TABS CONFIG
 
 ;; When you visit a file, point goes to the last place where it
 ;; was when you previously visited the same file.
