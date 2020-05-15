@@ -118,6 +118,9 @@ alias gits='git status'
 # synup source code location
 alias sy='cd /Users/Arun/Desktop/synup/code/app/client/source_codes'
 alias synup='cd ~ && sh start-code.sh'
+
+alias vim='nvim'
+
 # mkcd => make a dir and cd into it
 mkcd() { mkdir -p "$1" && cd "$1"; } 
 source ~/.zshenv
