@@ -7,11 +7,20 @@ set softtabstop=2
 " when indenting with '>', use 2 spaces width
 set shiftwidth=2
 
+" ***********************************
+" START: Key mappings
+" ***********************************
 " clear the highlight after search on hitting Enter
 " ref: https://stackoverflow.com/a/662914/1410291
 nnoremap <CR> :noh<CR><CR>
 
+" map <Ctrl w> ===> <Alt/Meta w> in INSERT mode
+" note: ∑ is emitted by Alt w/Meta w in mac
+inoremap ∑ <C-w>
 
+" ***********************************
+" END: Key mappings
+" ***********************************
 
 " ref:// https://github.com/junegunn/vim-plug
 " Specify a directory for plugins
