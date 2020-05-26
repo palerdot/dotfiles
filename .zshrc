@@ -14,6 +14,8 @@ typeset -U PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/Arun/.oh-my-zsh"
 
+export EDITOR="vim"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -120,6 +122,11 @@ alias sy='cd /Users/Arun/Desktop/synup/code/app/client/source_codes'
 alias synup='cd ~ && sh start-code.sh'
 
 alias vim='nvim'
+
+# open ~/.zshrc in using the default editor specified in $EDITOR
+alias ec="$EDITOR $HOME/.zshrc"
+# source ~/.zshrc
+alias sc="source $HOME/.zshrc"
 
 # mkcd => make a dir and cd into it
 mkcd() { mkdir -p "$1" && cd "$1"; } 
