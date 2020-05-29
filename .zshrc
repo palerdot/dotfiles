@@ -117,8 +117,6 @@ alias ll='ls -Glh'
 alias tailf='tail -f'
 # git status
 alias gits='git status'
-# synup source code location
-alias sy='cd /Users/Arun/Desktop/synup/code/app/client/source_codes'
 
 alias vim='nvim'
 
