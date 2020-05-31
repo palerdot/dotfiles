@@ -8,6 +8,11 @@ set softtabstop=2
 set shiftwidth=2
 
 " ***********************************
+" GOLANG specifid stuffs
+autocmd FileType go setlocal shiftwidth=8 tabstop=8
+" ***********************************
+" 
+" ***********************************
 " START: Key mappings
 " ***********************************
 " clear the highlight after search on hitting Enter
