@@ -41,6 +41,8 @@ Plug 'junegunn/vim-easy-align'
 Plug 'joshdick/onedark.vim'
 " vim polyglot
 Plug 'sheerun/vim-polyglot'
+" go features
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Initialize plugin system
 call plug#end()
