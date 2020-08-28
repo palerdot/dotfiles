@@ -134,4 +134,18 @@ source ~/.zshenv
 unsetopt inc_append_history
 unsetopt share_history
 
+# ref: https://stackoverflow.com/a/43420898/1410291
+# add new line to prompt
+prompt_end() {
+  if [[ -n $CURRENT_BG ]]; then
+      print -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+  else
+      print -n "%{%k%}"
+  fi
 
+  print -n "%{%f%}"
+  CURRENT_BG='' 
+
+  #Adds the new line and ➜ as the start character.
+  printf "\n ➜";
+}
