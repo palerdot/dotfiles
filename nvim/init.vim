@@ -1,1 +1,0 @@
-/Users/Arun/play/Mackup/.config/nvim/init.vim
