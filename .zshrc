@@ -8,6 +8,9 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
+# stop homebrew updating other packages when installing a package
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 # remove duplicate path entries??
 typeset -U PATH
 
@@ -149,3 +152,6 @@ prompt_end() {
   #Adds the new line and ➜ as the start character.
   printf "\n ➜";
 }
+[ -f "/Users/arun/.ghcup/env" ] && source "/Users/arun/.ghcup/env" # ghcup-env
+
+
