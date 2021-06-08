@@ -122,7 +122,6 @@ alias tailf='tail -f'
 alias gits='git status'
 
 alias vim='nvim'
-
 # open ~/.zshrc in using the default editor specified in $EDITOR
 alias ec="$EDITOR $HOME/.zshrc"
 # source ~/.zshrc
@@ -130,7 +129,7 @@ alias sc="source $HOME/.zshrc"
 
 # mkcd => make a dir and cd into it
 mkcd() { mkdir -p "$1" && cd "$1"; } 
-source ~/.zshenv
+# source ~/.zshenv
 
 # use tab specific history
 # ref: https://superuser.com/a/1248123/267486
