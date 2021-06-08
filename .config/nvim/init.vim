@@ -53,3 +53,32 @@ let g:rustfmt_autosave = 1
 call plug#end()
 
 color onedark
+
+" ***********************************
+" START: Status line color changes
+" ***********************************
+" define the necessary colors
+" ref: https://stackoverflow.com/questions/48271865/vim-whats-the-best-way-to-set-statusline-color-to-change-based-on-mode
+hi NormalColor guifg=Black guibg=Green ctermbg=236 ctermfg=245
+hi InsertColor guifg=Black guibg=Cyan ctermbg=63 ctermfg=15
+hi ReplaceColor guifg=Black guibg=maroon1 ctermbg=230 ctermfg=0
+" Set ctermbg, ctermfg to show the status line c:olor
+" hi VisualColor guifg=Black guibg=Orange ctermbg=NONE ctermfg=NONE
+hi VisualColor guifg=Black guibg=Orange ctermbg=236 ctermfg=15
+
+ 
+" initially clear the status line
+set statusline=
+
+" always show the status line
+set laststatus=2
+
+" map the colors to status line
+set statusline+=%#NormalColor#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#InsertColor#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#ReplaceColor#%{(mode()=='R')?'\ \ REPLACE\ ':''}
+set statusline+=%#VisualColor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=%#VisualColor#%{(mode()=='V')?'\ \ VISUAL\ ':''}
+" ***********************************
+" END: Status line color changes
+" ***********************************
