@@ -48,6 +48,9 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 " enable auto format of rust
 let g:rustfmt_autosave = 1
+" fuzzy finder 
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'  " General fuzzy finder
 
 " Initialize plugin system
 call plug#end()

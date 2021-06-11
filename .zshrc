@@ -154,3 +154,5 @@ prompt_end() {
 [ -f "/Users/arun/.ghcup/env" ] && source "/Users/arun/.ghcup/env" # ghcup-env
 
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
