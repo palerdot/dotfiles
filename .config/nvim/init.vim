@@ -68,11 +68,16 @@ call plug#end()
 " START: palenight color scheme
 " *****************************************
 set background=dark
-colorscheme palenight
 
 " Italics for my favorite color scheme
 let g:palenight_terminal_italics=1
 
+let g:palenight_color_overrides = {
+\    'red': { 'gui': '#ff917e', "cterm": "204", "cterm16": "1" },
+\}
+
+
+colorscheme palenight
 
 " ref: https://github.com/drewtempelmeyer/palenight.vim
 if (has("nvim"))
