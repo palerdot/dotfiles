@@ -40,6 +40,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/vim-easy-align'
 " one dark color scheme
 Plug 'joshdick/onedark.vim'
+
+" pale night color scheme
+Plug 'drewtempelmeyer/palenight.vim'
+
 " vim polyglot
 Plug 'sheerun/vim-polyglot'
 " go features
@@ -55,7 +59,8 @@ Plug 'junegunn/fzf.vim'  " General fuzzy finder
 " Initialize plugin system
 call plug#end()
 
-color onedark
+" color onedark
+
 
 " ***********************************
 " START: Status line color changes
@@ -85,3 +90,29 @@ set statusline+=%#VisualColor#%{(mode()=='V')?'\ \ VISUAL\ ':''}
 " ***********************************
 " END: Status line color changes
 " ***********************************
+"
+"
+" *****************************************
+" START: palenight color scheme
+" *****************************************
+set background=dark
+colorscheme palenight
+
+" Italics for my favorite color scheme
+let g:palenight_terminal_italics=1
+
+" ref: https://github.com/drewtempelmeyer/palenight.vim
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+if (has("termguicolors"))
+  set termguicolors
+endif
+" *****************************************
+" END: palenight color scheme
+" *****************************************
