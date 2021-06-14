@@ -116,6 +116,9 @@ set statusline=
 " always show the status line
 set laststatus=2
 
+" hide the extra mode info
+set noshowmode
+
 " map the colors to status line
 set statusline+=%#NormalColor#%{(mode()=='n')?'\ \ NORMAL\ ':''}
 set statusline+=%#InsertColor#%{(mode()=='i')?'\ \ INSERT\ ':''}
