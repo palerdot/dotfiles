@@ -6,7 +6,8 @@ set tabstop=2
 set softtabstop=2
 " when indenting with '>', use 2 spaces width
 set shiftwidth=2
-
+" show line number by default
+set number
 " ***********************************
 " GOLANG specifid stuffs
 autocmd FileType go setlocal shiftwidth=8 tabstop=8
