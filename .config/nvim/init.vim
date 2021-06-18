@@ -57,6 +57,9 @@ let g:rustfmt_autosave = 1
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'  " General fuzzy finder
 
+" vim light line
+Plug 'itchyny/lightline.vim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -77,6 +80,8 @@ let g:palenight_color_overrides = {
 \    'red': { 'gui': '#ff917e', "cterm": "204", "cterm16": "1" },
 \}
 
+" lightline configuration
+let g:lightline = { 'colorscheme': 'palenight' }
 
 colorscheme palenight
 
