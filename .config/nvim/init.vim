@@ -57,6 +57,17 @@ let g:rustfmt_autosave = 1
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'  " General fuzzy finder
 
+
+" *****************************************
+" START: fzf related config
+" *****************************************
+let g:fzf_action = {
+  \ 'return': 'tab split',
+\}
+" *****************************************
+" END: fzf related config
+" *****************************************
+
 " Initialize plugin system
 call plug#end()
 
