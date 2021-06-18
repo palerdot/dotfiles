@@ -53,10 +53,11 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 " enable auto format of rust
 let g:rustfmt_autosave = 1
+" vim light line
+Plug 'itchyny/lightline.vim'
 " fuzzy finder 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'  " General fuzzy finder
-
 
 " *****************************************
 " START: fzf related config
@@ -88,6 +89,8 @@ let g:palenight_color_overrides = {
 \    'red': { 'gui': '#ff917e', "cterm": "204", "cterm16": "1" },
 \}
 
+" lightline configuration
+let g:lightline = { 'colorscheme': 'palenight' }
 
 colorscheme palenight
 
