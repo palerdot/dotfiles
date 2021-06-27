@@ -55,9 +55,21 @@ Plug 'rust-lang/rust.vim'
 let g:rustfmt_autosave = 1
 " vim light line
 Plug 'itchyny/lightline.vim'
+
+
+
 " fuzzy finder 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'  " General fuzzy finder
+
+
+" ref: https://github.com/junegunn/fzf.vim/issues/47#issuecomment-160237795
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! PFiles execute 'Files' s:find_git_root()
+
 
 " *****************************************
 " START: fzf related config
